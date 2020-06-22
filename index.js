@@ -5,11 +5,6 @@ const { CreateCanvas, loadImage } = require("canvas");
 
 const bot = new Discord.Client();
 
-const ytdl = require("ytdL-core")
-const streamOptions ={
-    seek: 0,
-    volume: 1
-};
 
 const token = 'NzIyNjY4NjE0NjAzMjQzNTIw.Xumbtg.SV6NM4ZV4zYwt7LJqeTvre5ahPU';
 
