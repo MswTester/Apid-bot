@@ -265,7 +265,7 @@ bot.on('message', message=>{
         
         case '청소':
             if(!args[1]) return eror('잘못된 명령, 도움이 필요하시면 !도움말을 입력하세요.');
-            if(eval(args[1]) > 99) return eror('청소 범위는 1~99로 해주세요');
+            if(eval(args[1]) > 99) return eror('청소 범위는 1~99로 해주세요.');
             message.channel.bulkDelete(args[1]);
         break;
 
