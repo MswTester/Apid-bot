@@ -38,7 +38,7 @@ let servers = {};
 
 bot.on('message', message=>{
     
-    console.log(message.author.username + '(' + message.author.tag + ') : ' + message.content);
+    console.log('[' + message.channel.name + '] ' + message.author.username + '(' + message.author.tag + ') : ' + message.content);
 
     function bad(){
         message.channel.bulkDelete(1);
