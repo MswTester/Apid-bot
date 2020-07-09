@@ -38,6 +38,8 @@ let servers = {};
 
 bot.on('message', message=>{
     
+    console.log(message.author.username + '(' + message.author.tag + ') : ' + message.content);
+
     function bad(){
         message.channel.bulkDelete(1);
         var gwarns = {};
