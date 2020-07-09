@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const jsonfile = require('jsonfile');
 const { CreateCanvas, loadImage } = require("canvas");
+const { ALL } = require('dns');
 
 const bot = new Discord.Client();
 
@@ -379,29 +380,12 @@ bot.on('message', (message) => {
             }
     }
 
-    bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "신", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발"]
+    bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "신", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발", "야발", "ㅅ바", "쒸발"]
 
-    if(message.content == bau[0] || message.content == bau[1] || message.content == bau[2]) {
+    if(message.content == bau[ALL]) {
         bad()
     }
-    if(message.content == bau[3] || message.content == bau[4] || message.content == bau[5]) {
-        bad()
-    }
-    if(message.content == bau[6] || message.content == bau[7] || message.content == bau[8]) {
-        bad()
-    }
-    if(message.content == bau[9] || message.content == bau[10] || message.content == bau[11]) {
-        bad()
-    }
-    if(message.content == bau[12] || message.content == bau[13] || message.content == bau[14]) {
-        bad()
-    }
-    if(message.content == bau[15] || message.content == bau[16] || message.content == bau[17]) {
-        bad()
-    }
-    if(message.content == bau[18] || message.content == bau[19] || message.content == bau[20]) {
-        bad()
-    }
+    
 })
 
 bot.login(token);
