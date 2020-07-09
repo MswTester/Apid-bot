@@ -398,7 +398,6 @@ bot.on('message', (message) => {
     bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "ㅗㅗ", "ㅗㅗㅗ", "슈뱌", "ㅆ발", "ㅆ바", "^^|발", "^|발", "년", "놈", "ㄲㅈ"]
 
     if(message.content == bau[ALL]) {
-        if(message.channel.id === 722265274673266719) return;
         bad()
     }
     
