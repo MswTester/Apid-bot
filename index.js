@@ -38,6 +38,78 @@ let servers = {};
 
 bot.on('message', message=>{
     
+    function bad(){
+        message.channel.bulkDelete(1);
+        var gwarns = {};
+        if(fs.existsSync('warns.json')){
+            gwarns = jsonfile.readFileSync('warns.json');
+        }
+        let wUser = message.member;
+
+        let reason = '욕설';
+
+            if(message.guild.id in gwarns === false){
+                gwarns[message.guild.id] = {};
+            }
+
+            const warns = gwarns[message.guild.id];
+            if(message.author.id in warns === false){
+                warns[message.author.id] = {
+                    warn: 0
+                };
+            }
+
+            warns[wUser.id].warn = warns[wUser.id].warn + 1;
+
+            jsonfile.writeFileSync('warns.json', gwarns);
+
+            const warnEm = new Discord.MessageEmbed()
+            .setTitle('경고')
+            .setColor(0xFF6600)
+            .addField('```유저```', wUser.user.tag)
+            .addField('```경고 횟수```', warns[wUser.id].warn)
+            .addField('```이유```', reason)
+            message.channel.send(warnEm);
+
+            if(warns[wUser.id].warn === 3){
+                let muterole = message.guild.roles.cache.find(role => role.name == "Muted");
+                wUser.roles.add(muterole.id);
+                const mwarn = new Discord.MessageEmbed()
+                .setTitle(['경고 3회 뮤트알림'])
+                .setColor(0x0000FF)
+                .setDescription(wUser.user.username + '님이 경고 3회가 넘었습니다. 10분동안 뮤트가 됩니다.')
+                message.channel.send(mwarn)
+                setTimeout(function(){
+                    wUser.roles.remove(muterole.id);
+                    message.channel.send(`@${message.author.tag}님의 뮤트가 풀렸습니다.`)
+                }, 600000);
+            }
+            if(warns[wUser.id].warn === 5){
+                const mwarn = new Discord.MessageEmbed()
+                .setTitle(['경고 5회 차단알림'])
+                .setColor(0x0000FF)
+                .setDescription(wUser.user.username + '님이 경고 5회가 넘었습니다. 1시간동안 차단이 됩니다.')
+                message.channel.send(mwarn)
+                warns[wUser.id].warn = 0;
+                jsonfile.writeFileSync('warns.json', warns);
+                wUser.ban({reason : '경고 5회'})
+                setTimeout(function(){
+                    message.guild.members.unban(wUser.id)
+                }, 3600000);
+            }
+    }
+
+    const bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "ㅗㅗ", "ㅗㅗㅗ", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "년", "놈", "ㄲㅈ", "tlqk"]
+
+    var dbau
+    for(dbau = 0; dbau < bau.length; dbau++){
+        if(message.channel.id == 722265274673266719) return console.log('채널제외');
+        if(message.content == bau[dbau]) {
+            console.log('욕사용감지됨');
+            bad()
+        }
+    }
+
     function eror(a){
         const erorr = new Discord.MessageEmbed()
         .setTitle('오류 x404')
@@ -300,109 +372,24 @@ bot.on('message', message=>{
             message.channel.send(warnEmb);
 
         break;
+
+        case 'log':
+            console.log(message.guild.roles);
+            console.log('===============')
+            console.log(message.guild);
+            console.log('===============')
+            console.log(message.channel);
+            console.log('===============')
+            message.channel.bulkDelete(1);
+        break;
+
+        case 're':
+            console.log('rebooting ...');
+            message.channel.bulkDelete(1);
+            setTimeout(function(){maownALJKLWJv ;a3h4.bnkbj}, 1000);
+        break;
     }
 })
 
-bot.on('message', (message) => {
-    if (message.content == '!log roles') {
-        console.log(message.guild.roles);
-        message.channel.bulkDelete(1);
-    }
-    if (message.content == '!log channel id') {
-        console.log(message.channel.id);
-        message.channel.bulkDelete(1);
-    }
-    if (message.content == '!log guild id') {
-        console.log(message.guild.id);
-        message.channel.bulkDelete(1);
-    }
-    if (message.content == '!log guild') {
-        console.log(message.guild);
-        message.channel.bulkDelete(1);
-    }
-    if (message.content == '!log channel') {
-        console.log(message.channel);
-        message.channel.bulkDelete(1);
-    }
-
-    if (message.content == '!re') {
-        console.log('rebooting ...');
-        message.channel.bulkDelete(1);
-        setTimeout(function(){maownALJKLWJv ;a3h4.bnkbj}, 1000);
-    }
-})
-
-bot.on('message', (message) => {
-
-    function bad(){
-        message.channel.bulkDelete(1);
-        var gwarns = {};
-        if(fs.existsSync('warns.json')){
-            gwarns = jsonfile.readFileSync('warns.json');
-        }
-        let wUser = message.member;
-
-        let reason = '욕설';
-
-            if(message.guild.id in gwarns === false){
-                gwarns[message.guild.id] = {};
-            }
-
-            const warns = gwarns[message.guild.id];
-            if(message.author.id in warns === false){
-                warns[message.author.id] = {
-                    warn: 0
-                };
-            }
-
-            warns[wUser.id].warn = warns[wUser.id].warn + 1;
-
-            jsonfile.writeFileSync('warns.json', gwarns);
-
-            const warnEm = new Discord.MessageEmbed()
-            .setTitle('경고')
-            .setColor(0xFF6600)
-            .addField('```유저```', wUser.user.tag)
-            .addField('```경고 횟수```', warns[wUser.id].warn)
-            .addField('```이유```', reason)
-            message.channel.send(warnEm);
-
-            if(warns[wUser.id].warn === 3){
-                let muterole = message.guild.roles.cache.find(role => role.name == "Muted");
-                wUser.roles.add(muterole.id);
-                const mwarn = new Discord.MessageEmbed()
-                .setTitle(['경고 3회 뮤트알림'])
-                .setColor(0x0000FF)
-                .setDescription(wUser.user.username + '님이 경고 3회가 넘었습니다. 10분동안 뮤트가 됩니다.')
-                message.channel.send(mwarn)
-                setTimeout(function(){
-                    wUser.roles.remove(muterole.id);
-                    message.channel.send(`@${message.author.tag}님의 뮤트가 풀렸습니다.`)
-                }, 600000);
-            }
-            if(warns[wUser.id].warn === 5){
-                const mwarn = new Discord.MessageEmbed()
-                .setTitle(['경고 5회 차단알림'])
-                .setColor(0x0000FF)
-                .setDescription(wUser.user.username + '님이 경고 5회가 넘었습니다. 1시간동안 차단이 됩니다.')
-                message.channel.send(mwarn)
-                warns[wUser.id].warn = 0;
-                jsonfile.writeFileSync('warns.json', warns);
-                wUser.ban({reason : '경고 5회'})
-                setTimeout(function(){
-                    message.guild.members.unban(wUser.id)
-                }, 3600000);
-            }
-    }
-
-    bau = ["ㅁㅊ", "ㅅ"]
-
-    if(message.content == bau[ALL]) {
-        if(message.channel.id === 722265274673266719) return console.log('채널제외');
-        console.log('욕사용감지됨');
-        bad()
-    }
-    
-})
 
 bot.login(token);
