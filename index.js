@@ -304,13 +304,28 @@ bot.on('message', message=>{
 })
 
 bot.on('message', (message) => {
-    if (message.content == '$log') {
-        console.log(message.guild);
+    if (message.content == '!log roles') {
         console.log(message.guild.roles);
         message.channel.bulkDelete(1);
     }
+    if (message.content == '!log channel id') {
+        console.log(message.channel.id);
+        message.channel.bulkDelete(1);
+    }
+    if (message.content == '!log guild id') {
+        console.log(message.guild.id);
+        message.channel.bulkDelete(1);
+    }
+    if (message.content == '!log guild') {
+        console.log(message.guild);
+        message.channel.bulkDelete(1);
+    }
+    if (message.content == '!log channel') {
+        console.log(message.channel);
+        message.channel.bulkDelete(1);
+    }
 
-    if (message.content == '$re') {
+    if (message.content == '!re') {
         console.log('rebooting ...');
         message.channel.bulkDelete(1);
         setTimeout(function(){maownALJKLWJv ;a3h4.bnkbj}, 1000);
@@ -383,6 +398,7 @@ bot.on('message', (message) => {
     bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "신", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발", "야발", "ㅅ바", "쒸발"]
 
     if(message.content == bau[ALL]) {
+        if(message.channel == channel.id) return;
         bad()
     }
     
