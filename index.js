@@ -105,8 +105,8 @@ bot.on('message', message=>{
 
     var dbau
     for(dbau = 0; dbau < bau.length; dbau++){
-        if(message.channel.id == 722265274673266719) return console.log('채널제외');
         if(message.content == bau[dbau]) {
+            if(message.channel.id == 722265274673266719) return console.log('채널제외');
             console.log('욕사용감지됨');
             bad()
         }
