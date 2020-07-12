@@ -16,6 +16,7 @@ bot.on('ready', () =>{
 })
 
 bot.on('guildMemberAdd', member =>{
+    if(!message.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
     const channel = member.guild.systemChannel;
     if(!channel) return;
 
@@ -25,6 +26,7 @@ bot.on('guildMemberAdd', member =>{
 
 
 bot.on('guildMemberRemove', member =>{
+    if(!message.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
     const channel = member.guild.systemChannel;
     if(!channel) return;
 
@@ -101,11 +103,12 @@ bot.on('message', message=>{
             }
     }
 
-    const bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "ㅗㅗ", "ㅗㅗㅗ", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻"]
+    const bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "ㅗㅗ", "ㅗㅗㅗ", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻", "🖕", "🖕 "]
 
     var dbau
     for(dbau = 0; dbau < bau.length; dbau++){
         if(message.content == bau[dbau]) {
+            if(!message.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
             if(message.channel.id == 722265274673266719) return console.log('채널제외');
             console.log('욕사용감지됨');
             bad()
