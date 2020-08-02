@@ -16,7 +16,7 @@ bot.on('ready', () =>{
 })
 
 bot.on('guildMemberAdd', member =>{
-    if(!message.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
+    if(!member.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
     const channel = member.guild.systemChannel;
     if(!channel) return;
 
@@ -26,7 +26,7 @@ bot.on('guildMemberAdd', member =>{
 
 
 bot.on('guildMemberRemove', member =>{
-    if(!message.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
+    if(!member.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
     const channel = member.guild.systemChannel;
     if(!channel) return;
 
@@ -103,11 +103,11 @@ bot.on('message', message=>{
             }
     }
 
-    const bau = ["ㅁㅊ", "ㅅ", "씨발", "시", "발", "ㅅㅂ", "시발", "병신", "병", "개새끼", "새끼", "애미", "^^ㅣ발", "^ㅣ발", "tlqkf", "ㅗ", ":middle_finger:", ":middle_finger: ", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "ㅗㅗ", "ㅗㅗㅗ", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻", "🖕", "🖕 "]
+    const bau = ["ㅁㅊ", "씨발", "ㅅㅂ", "시발", "병신", "새끼", "애미", "^ㅣ발", "ㅗ", ":middle_finger:", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "발년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻", "🖕", "싸발", "조까", "ㅈ까", "ㅈ같", "좆"]
 
     var dbau
     for(dbau = 0; dbau < bau.length; dbau++){
-        if(message.content == bau[dbau]) {
+        if(message.content.includes(bau[dbau])) {
             if(!message.guild.id == 714752155377991731) return console.log("이 봇은 APID에서만 사용가능합니다.");
             if(message.channel.id == 722265274673266719) return console.log('채널제외');
             console.log('욕사용감지됨');
@@ -266,6 +266,28 @@ bot.on('message', message=>{
                             member.roles.remove(muterole.id);
                             message.channel.send(`@${member.user.tag}님의 뮤트가 풀렸습니다.`)
                         }, time*1000);
+
+                    } else {
+                        eror("사용자를 찾을 수 없습니다.");
+                    }
+                } else {
+                    eror("사용자를 찾을 수 없습니다.");
+                }
+        break;
+
+        case '언뮤트':
+            if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return eror('관리자 권한이 없습니다.');
+                const usermm = message.mentions.users.first();
+                if (usermm) {
+                    const memmber = message.guild.member(usermm);
+
+                    if (memmber) {
+
+                        if(!memmber.roles.cache.find(role => role.name == "Muted")) return eror('사용자는 뮤트되어 있지 않습니다.');
+                        let muterole = message.guild.roles.cache.find(role => role.name == "Muted");
+                        memmber.roles.remove(muterole.id);
+                        
+                        message.channel.send(`@${memmber.user.tag}님의 뮤트가 풀렸습니다.`)
 
                     } else {
                         eror("사용자를 찾을 수 없습니다.");
