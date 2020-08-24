@@ -148,7 +148,7 @@ bot.on('message', message=>{
         case 'mk':
             console.log('activate');
             if(!args[1]) return eror('You need a second args');
-            guild.channels.create(args[1], {
+            message.guild.channels.create(args[1], {
                 type: 'text'
             });
             console.log('created');
@@ -162,7 +162,7 @@ bot.on('message', message=>{
                 const embed = new Discord.MessageEmbed()
                 .setTitle('봇 정보')
                 .setColor(0xE62EA3)
-                .addField('봇 이름', 'APID')
+                .addField('봇 이름', 'APID-BOT')
                 .addField('봇 버전', '1.0.0.1')
                 .addField('생성 날짜', '2020-04-24');
                 message.channel.send(embed);
