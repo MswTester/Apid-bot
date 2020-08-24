@@ -148,7 +148,7 @@ bot.on('message', message=>{
         case 'mk':
             console.log('activate');
             if(!args[1]) return eror('You need a second args');
-            guild.channels.create(args[1], {
+            message.guild.channels.create(args[1], {
                 type: 'text'
             });
             console.log('created');
