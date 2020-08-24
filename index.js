@@ -153,7 +153,7 @@ bot.on('message', message=>{
             let category = message.guild.channels.cache.find(c => c.name == "커뮤니티" && c.type == "category");
             let chnl = message.guild.channels.cache.find(c => c.name == args[1] && c.type == "text");
             console.log(chnl);
-            chnl.parentID = category.id;
+            chnl.setParent(category.id);
             console.log('success');
         break;
 
