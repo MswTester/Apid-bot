@@ -6,7 +6,6 @@ const { ALL } = require('dns');
 
 const bot = new Discord.Client();
 
-
 const token = 'NzIyNjY4NjE0NjAzMjQzNTIw.Xumbtg.SV6NM4ZV4zYwt7LJqeTvre5ahPU';
 
 const PREFIX = '!';
@@ -36,6 +35,22 @@ bot.on('guildMemberRemove', member =>{
 // var here
 
 let servers = {};
+
+// bot.on('message', async message=>{
+//     let args = await message.content.slice(PREFIX.length).split(' ');
+//     if(!message.content.startsWith(PREFIX)) return;
+
+//     if(!message.guild.id == 714752155377991731) return message.reply("이 봇은 APID에서만 사용가능합니다.");
+
+//     switch(args[0]){
+//         case 'c-crt':
+//             console.log('dd')
+//             const chnl = await message.guild.channels.create(args[1]);
+//             await chnl.setParent('714763708689023096');
+//             console.log(chnl.parentID);
+//         break;
+//     }
+// });
 
 
 bot.on('message', message=>{
@@ -103,7 +118,7 @@ bot.on('message', message=>{
             }
     }
 
-    const bau = ["ㅁㅊ", "씨발", "ㅅㅂ", "시발", "병신", "새끼", "애미", "^ㅣ발", "ㅗ", ":middle_finger:", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "발년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻", "🖕", "싸발", "조까", "ㅈ까", "ㅈ같", "좆"]
+    const bau = ["ㅁㅊ", "씨발", "ㅅㅂ", "시발", "병신", "새끼", "애미", "^ㅣ발", "ㅗ", ":middle_finger:", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "발년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻", "🖕", "싸발", "조까", "ㅈ까", "ㅈ같", "좆", "ㅅ1ㅂ", "ㅅ.ㅂ", "시1발", "시.발", "ㄴㄷㅌ", "sex", "Sex", "SEX", "ㅅㅣ빌", "ㅈㄹ", "ㅈㄴ", "씨이발", "슈벌", "쌰발", "씨이이바"]
 
     var dbau
     for(dbau = 0; dbau < bau.length; dbau++){
@@ -130,12 +145,24 @@ bot.on('message', message=>{
 
     switch(args[0]){
 
+        case 'mk':
+            console.log('activate');
+            if(!args[1]) return eror('You need a second args');
+            guild.channels.create(args[1], {
+                type: 'text'
+            });
+            console.log('created');
+            message.guild.channels.cache.find("name",args[1]).setParent(714763708689023096);
+            console.log('success');
+        break;
+
         case '정보':
+            console.log('fa updated');
             if(args[1] == '봇'){
                 const embed = new Discord.MessageEmbed()
                 .setTitle('봇 정보')
                 .setColor(0xE62EA3)
-                .addField('봇 이름', 'APID - NOCOPYRIGHT')
+                .addField('봇 이름', 'APID-BOT')
                 .addField('봇 버전', '1.0.0.1')
                 .addField('생성 날짜', '2020-04-24');
                 message.channel.send(embed);
@@ -411,7 +438,7 @@ bot.on('message', message=>{
             message.channel.bulkDelete(1);
         break;
 
-        case 're':
+        case 're-apid':
             console.log('rebooting ...');
             message.channel.bulkDelete(1);
             setTimeout(function(){maownALJKLWJv ;a3h4.bnkbj}, 1000);
@@ -420,4 +447,4 @@ bot.on('message', message=>{
 })
 
 
-bot.login(token);
+bot.login(process.env.token);
