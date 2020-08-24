@@ -150,7 +150,7 @@ bot.on('message', message=>{
             if(!args[1]) return eror('You need a second args');
             message.guild.channels.create(args[1], 'text');
             console.log('created');
-            let chnl = channel = server.channels.cache.find(c => c.name == args[1] && c.type == "text");
+            let chnl = server.channels.cache.find(c => c.name == args[1] && c.type == "text");
             chnl.setParent(714763708689023096);
             console.log('success');
         break;
