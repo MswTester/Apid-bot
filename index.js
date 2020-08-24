@@ -46,6 +46,7 @@ bot.on('message', async message=>{
         case 'c-crt':
             const chnl = await message.guild.channels.create(args[1]);
             await chnl.setParent('714763708689023096');
+            console.log(chnl.parentID);
         break;
     }
 });
