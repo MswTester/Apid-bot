@@ -146,11 +146,14 @@ bot.on('message', message=>{
     switch(args[0]){
 
         case 'c-crt':
+            console.log('activate');
             if(!args[1]) return eror('You need a second args');
             guild.channels.create(args[1], {
                 type: 'text'
             });
+            console.log('created');
             message.guild.channels.cache.find("name",args[1]).setParent(714763708689023096);
+            console.log('success');
         break;
 
         case '정보':
