@@ -37,7 +37,7 @@ bot.on('guildMemberRemove', member =>{
 let servers = {};
 
 bot.on('message', async message=>{
-    let args = message.content.slice(PREFIX.length).split(' ');
+    let args = await message.content.slice(PREFIX.length).split(' ');
     if(!message.content.startsWith(PREFIX)) return;
 
     if(!message.guild.id == 714752155377991731) return message.reply("이 봇은 APID에서만 사용가능합니다.");
@@ -424,7 +424,7 @@ bot.on('message', message=>{
             message.channel.bulkDelete(1);
         break;
 
-        case 're':
+        case 're-apid':
             console.log('rebooting ...');
             message.channel.bulkDelete(1);
             setTimeout(function(){maownALJKLWJv ;a3h4.bnkbj}, 1000);
