@@ -150,8 +150,9 @@ bot.on('message', message=>{
             if(!args[1]) return eror('You need a second args');
             message.guild.channels.create(args[1], 'text');
             console.log('created');
+            let category = message.guild.channels.cache.find(c => c.name == "커뮤니티" && c.type == "category")
             let chnl = message.guild.channels.cache.find(c => c.name == args[1] && c.type == "text");
-            chnl.setParent(714763708689023096);
+            chnl.setParent(category.id);
             console.log('success');
         break;
 
