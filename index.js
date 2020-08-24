@@ -6,7 +6,6 @@ const { ALL } = require('dns');
 
 const bot = new Discord.Client();
 
-
 const token = 'NzIyNjY4NjE0NjAzMjQzNTIw.Xumbtg.SV6NM4ZV4zYwt7LJqeTvre5ahPU';
 
 const PREFIX = '!';
@@ -36,6 +35,20 @@ bot.on('guildMemberRemove', member =>{
 // var here
 
 let servers = {};
+
+bot.on('message', async message=>{
+    let args = message.content.slice(PREFIX.length).split(' ');
+    if(!message.content.startsWith(PREFIX)) return;
+
+    if(!message.guild.id == 714752155377991731) return message.reply("이 봇은 APID에서만 사용가능합니다.");
+
+    switch(args[0]){
+        case 'c-crt':
+            const chnl = await message.guild.channels.create(args[1]);
+            await chnl.setParent('714763708689023096');
+        break;
+    }
+});
 
 
 bot.on('message', message=>{
