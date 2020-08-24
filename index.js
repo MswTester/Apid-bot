@@ -103,7 +103,7 @@ bot.on('message', message=>{
             }
     }
 
-    const bau = ["ㅁㅊ", "씨발", "ㅅㅂ", "시발", "병신", "새끼", "애미", "^ㅣ발", "ㅗ", ":middle_finger:", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "발년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻", "🖕", "싸발", "조까", "ㅈ까", "ㅈ같", "좆"]
+    const bau = ["ㅁㅊ", "씨발", "ㅅㅂ", "시발", "병신", "새끼", "애미", "^ㅣ발", "ㅗ", ":middle_finger:", "씨바", "슈발", "야발", "ㅅ바", "쒸발", "슈뱌", "ㅆ발", "ㅆ바", "^^발", "^발", "발년", "놈", "ㄲㅈ", "tlqk", "섹스", "색스", "샋", "섻", "🖕", "싸발", "조까", "ㅈ까", "ㅈ같", "좆", "ㅅ1ㅂ", "ㅅ.ㅂ", "시1발", "시.발", "ㄴㄷㅌ", "sex", "Sex", "SEX", "ㅅㅣ빌", "ㅈㄹ", "ㅈㄴ", "씨이발", "슈벌", "쌰발", "씨이이바"]
 
     var dbau
     for(dbau = 0; dbau < bau.length; dbau++){
@@ -135,7 +135,7 @@ bot.on('message', message=>{
                 const embed = new Discord.MessageEmbed()
                 .setTitle('봇 정보')
                 .setColor(0xE62EA3)
-                .addField('봇 이름', 'APID - NOCOPYRIGHT')
+                .addField('봇 이름', 'APID')
                 .addField('봇 버전', '1.0.0.1')
                 .addField('생성 날짜', '2020-04-24');
                 message.channel.send(embed);
