@@ -145,20 +145,19 @@ bot.on('message', message=>{
 
     switch(args[0]){
 
-        case 'mk':
-            console.log('activate');
-            if(!args[1]) return eror('You need a second args');
-            message.guild.channels.create(args[1], "text");
-            console.log('created');
-            let category = message.guild.channels.cache.find(c => c.name == "커뮤니티" && c.type == "category");
-            let chnl = message.guild.channels.cache.find(c => c.name == args[1] && c.type == "text");
-            console.log(chnl);
-            message.guild.channels.find("name", args[1]).setParent(category.id);
-            console.log('success');
-        break;
+        // case 'mk':
+        //     console.log('activate');
+        //     if(!args[1]) return eror('You need a second args');
+        //     message.guild.channels.create(args[1], "text");
+        //     console.log('created');
+        //     let category = message.guild.channels.cache.find(c => c.name == "커뮤니티" && c.type == "category");
+        //     let chnl = message.guild.channels.cache.find(c => c.name == args[1] && c.type == "text");
+        //     console.log(chnl);
+        //     message.guild.channels.find("name", args[1]).setParent(category.id);
+        //     console.log('success');
+        // break;
 
         case '정보':
-            console.log('fa updated');
             if(args[1] == '봇'){
                 const embed = new Discord.MessageEmbed()
                 .setTitle('봇 정보')
