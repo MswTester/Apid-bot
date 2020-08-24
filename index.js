@@ -157,6 +157,7 @@ bot.on('message', message=>{
         break;
 
         case '정보':
+            console.log('fa update');
             if(args[1] == '봇'){
                 const embed = new Discord.MessageEmbed()
                 .setTitle('봇 정보')
