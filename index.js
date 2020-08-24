@@ -145,7 +145,7 @@ bot.on('message', message=>{
 
     switch(args[0]){
 
-        case 'c-crt':
+        case 'mk':
             console.log('activate');
             if(!args[1]) return eror('You need a second args');
             guild.channels.create(args[1], {
