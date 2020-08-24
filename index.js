@@ -36,20 +36,21 @@ bot.on('guildMemberRemove', member =>{
 
 let servers = {};
 
-bot.on('message', async message=>{
-    let args = await message.content.slice(PREFIX.length).split(' ');
-    if(!message.content.startsWith(PREFIX)) return;
+// bot.on('message', async message=>{
+//     let args = await message.content.slice(PREFIX.length).split(' ');
+//     if(!message.content.startsWith(PREFIX)) return;
 
-    if(!message.guild.id == 714752155377991731) return message.reply("이 봇은 APID에서만 사용가능합니다.");
+//     if(!message.guild.id == 714752155377991731) return message.reply("이 봇은 APID에서만 사용가능합니다.");
 
-    switch(args[0]){
-        case 'c-crt':
-            const chnl = await message.guild.channels.create(args[1]);
-            await chnl.setParent('714763708689023096');
-            console.log(chnl.parentID);
-        break;
-    }
-});
+//     switch(args[0]){
+//         case 'c-crt':
+//             console.log('dd')
+//             const chnl = await message.guild.channels.create(args[1]);
+//             await chnl.setParent('714763708689023096');
+//             console.log(chnl.parentID);
+//         break;
+//     }
+// });
 
 
 bot.on('message', message=>{
@@ -143,6 +144,14 @@ bot.on('message', message=>{
     if(!message.guild.id == 714752155377991731) return message.reply("이 봇은 APID에서만 사용가능합니다.");
 
     switch(args[0]){
+
+        case 'c-crt':
+            if(!args[1]) return eror('You need a second args');
+            guild.channels.create(args[1], {
+                type: 'text'
+            });
+            message.guild.channels.cache.find("name",args[1]).setParent(714763708689023096);
+        break;
 
         case '정보':
             if(args[1] == '봇'){
